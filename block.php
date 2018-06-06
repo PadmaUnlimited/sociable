@@ -23,7 +23,7 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 		$this->register_block_element(array(
 			'id' => 'icons-wrapper',
 			'name' => 'Icons Container',
-			'selector' => 'ul.Sociable-icons '
+			'selector' => 'ul.sociable-icons '
 		));
 
 		$this->register_block_element(array(
@@ -77,11 +77,11 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 	  	if ( $orientation === 'vertical' ) {
 
 	  		$css .= '
-	  			#block-' . $block_id . ' ul.Sociable-icons li { 
+	  			#block-' . $block_id . ' ul.sociable-icons li { 
 	  				margin-bottom: '. parent::get_setting($block, 'vertical-spacing', '10') .'px
 	  			}
 
-	  			#block-' . $block_id . ' ul.Sociable-icons li:last-child { 
+	  			#block-' . $block_id . ' ul.sociable-icons li:last-child { 
 	  				margin-bottom: 0;
 	  			}
 	  		';
@@ -93,12 +93,12 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 		if ( $orientation === 'horizontal' ) {
 
 	  		$css .= '
-	  			#block-' . $block_id . ' ul.Sociable-icons li {
+	  			#block-' . $block_id . ' ul.sociable-icons li {
 	  			    display: inline-block;
 	  				margin-right: '. parent::get_setting($block, 'horizontal-spacing', '10') .'px
 	  			}
 
-	  			#block-' . $block_id . ' ul.Sociable-icons li:last-child { 
+	  			#block-' . $block_id . ' ul.sociable-icons li:last-child { 
 	  				margin-right: 0;
 	  			}
 	  		';
@@ -114,13 +114,13 @@ class PadmaSociableBlock extends PadmaBlockAPI {
            $vertical_position = str_replace('center', 'middle', $position_fragments[0]);
 
 	    $css .= '
-	        #block-' . $block_id . ' div.Sociable-icons-container {
+	        #block-' . $block_id . ' div.sociable-icons-container {
 	            display: table;
 	            width: 100%;
 	            height: 100%;
 	        }
 
-               #block-' . $block_id . ' ul.Sociable-icons {
+               #block-' . $block_id . ' ul.sociable-icons {
                    display: table-cell;
                    text-align: ' . $horizontal_position . ';
                    vertical-align: ' . $vertical_position . ';
@@ -166,8 +166,8 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 
 		}
 
-		echo '<div class="Sociable-icons-container">';
-		echo '<ul class="Sociable-icons">';
+		echo '<div class="sociable-icons-container">';
+		echo '<ul class="sociable-icons">';
 
 			$i = 0;
 		  	foreach ( $icons as $icon ) {
@@ -178,8 +178,18 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 		  		if ($icon_set == 'custom') {
 		  			$img_url = $icon['image'];
 		  		} else {
-		  			$img_url = padma_url().'/library/blocks/Sociable/icons/' . $icon_set . '/' . padma_fix_data_type(padma_get('network', $icon));
+		  			$img_url = plugin_dir_url( __FILE__ ) . 'icons/' . $icon_set . '/' . padma_fix_data_type(padma_get('network', $icon));
 		  		}
+
+		  		debug(padma_get('icon-size', $icon, false));
+
+		  		if(padma_get('icon-size', $icon, false) != ''){
+		  			$size 		= padma_get('icon-size', $icon, false);
+		  			$img_url 	.= '-' . $size . '.png';
+		  		}else{
+					$img_url	.= '-64x64.png';
+		  		}
+		  		debug($img_url);
 
 		  		$i++;
 		  		$output = array(
@@ -222,5 +232,15 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 		$mimes['svg'] = 'image/svg+xml';
 		return $mimes;
 	}
+
+	public static function enqueue_action($block_id, $block = false) {
+
+			/* CSS */
+			wp_enqueue_style('padma-sociable', plugin_dir_path( __FILE__ ) . '/css/sociable.css');
+
+			/* JS */
+			wp_enqueue_script('padma-sociable', plugin_dir_path( __FILE__ ) . '/js/sociable.js', array('jquery'));
+
+		}
 	
 }

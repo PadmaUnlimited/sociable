@@ -17,12 +17,44 @@ class PadmaSociableBlockOptions extends PadmaBlockOptionsAPI {
 							'li#sub-tab-custom-icons-set'
 						)
 					),
-		'colorful-guache' => array(
+		'filled-outline-by-roundicons' => array(
 											'hide' => array(
-												'li[id*="-set"]:not(#sub-tab-colorful-guache-set)'
+												'li[id*="-set"]:not(#sub-tab-filled-outline-by-roundicons-set)'
 											),
 											'show' => array(
-												'li#sub-tab-colorful-guache-set'
+												'li#sub-tab-filled-outline-by-roundicons-set'
+											)
+										),
+		'flat-by-pixan' => array(
+											'hide' => array(
+												'li[id*="-set"]:not(#sub-tab-flat-by-pixan-set)'
+											),
+											'show' => array(
+												'li#sub-tab-flat-by-pixan-set'
+											)
+										),
+		'glyph-by-betterwork' => array(
+											'hide' => array(
+												'li[id*="-set"]:not(#sub-tab-glyph-by-betterwork-set)'
+											),
+											'show' => array(
+												'li#sub-tab-glyph-by-betterwork-set'
+											)
+										),
+		'handdrawn-by-side-project' => array(
+											'hide' => array(
+												'li[id*="-set"]:not(#sub-tab-handdrawn-by-side-project-set)'
+											),
+											'show' => array(
+												'li#sub-tab-handdrawn-by-side-project-set'
+											)
+										),
+		'outline-by-roundicons' => array(
+											'hide' => array(
+												'li[id*="-set"]:not(#sub-tab-outline-by-roundicons-set)'
+											),
+											'show' => array(
+												'li#sub-tab-outline-by-roundicons-set'
 											)
 										)
 	);
@@ -245,6 +277,18 @@ class PadmaSociableBlockOptions extends PadmaBlockOptionsAPI {
 						),
 
 						array(
+							'type' => 'select',
+							'name' => 'icon-size',
+							'label' => 'Icon size',
+							'options' => array(
+								'64x64' 	=> '64 x 64',
+								'128x128' => '128 x 128',
+								'256x256' => '256 x 256',
+								'512x512' => '512 x 512',
+							)
+						),
+
+						array(
 							'type' => 'text',
 							'name' => 'image-title',
 							'label' => '"title"',
@@ -285,13 +329,20 @@ class PadmaSociableBlockOptions extends PadmaBlockOptionsAPI {
 							'tooltip' => 'If you would like to open the link in a new window check this option',
 							'default' => false,
 						),
+						/*
+						array(
+							'name' => 'icon-preview',
+							'label' => 'Icon preview',
+							'type' => 'checkbox',
+						),*/
 
+						/*
 						array(
 							'name' 		=> 'author',
 							'label' 	=> 'About the author <p style="margin-left: 20px;margin-top: 10px;">'.self::get_author_data( $icon_set ).'</p>',
 							'type' 		=> 'heading',
 							'tooltip' 	=> 'Information about the author of the icon set',
-						)
+						)*/
 
 					),
 					'tooltip' => 'Upload the images that you would like to add to the image block.',
@@ -349,11 +400,19 @@ class PadmaSociableBlockOptions extends PadmaBlockOptionsAPI {
 
 			foreach ($results as $result) {
 
+
 		    	if ($result === '.' or $result === '..' or $result === '.DS_Store' or $result === 'author.txt') continue;
 
 			    if (!is_dir($path . '/' . $result)) {
 
-			        $icons[$result] = preg_replace("/\\.[^.\\s]{3,4}$/", "", $result);
+					$icon_network = str_replace('512x512', '', $result);
+					$icon_network = str_replace('256x256', '', $icon_network);
+					$icon_network = str_replace('128x128', '', $icon_network);
+					$icon_network = str_replace('64x64', '', $icon_network);
+					$icon_network = preg_replace("/\\.[^.\\s]{3,4}$/", "", $icon_network);
+					$icon_network = rtrim($icon_network,'-');
+
+			        $icons[$icon_network] = $icon_network;
 
 			    }
 			}
