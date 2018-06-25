@@ -181,7 +181,7 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 		  			$img_url = plugin_dir_url( __FILE__ ) . 'icons/' . $icon_set . '/' . padma_fix_data_type(padma_get('network', $icon));
 		  		}
 
-		  		debug(padma_get('icon-size', $icon, false));
+		  		//debug(padma_get('icon-size', $icon, false));
 
 		  		if(padma_get('icon-size', $icon, false) != ''){
 		  			$size 		= padma_get('icon-size', $icon, false);
@@ -189,7 +189,7 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 		  		}else{
 					$img_url	.= '-64x64.png';
 		  		}
-		  		debug($img_url);
+		  		//debug($img_url);
 
 		  		$i++;
 		  		$output = array(
@@ -234,12 +234,12 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 	}
 
 	public static function enqueue_action($block_id, $block = false) {
-
+			
 			/* CSS */
-			wp_enqueue_style('padma-sociable', plugin_dir_path( __FILE__ ) . '/css/sociable.css');
+			//wp_enqueue_style('padma-sociable', plugin_dir_url( __FILE__ ) . 'css/sociable.css');
 
 			/* JS */
-			wp_enqueue_script('padma-sociable', plugin_dir_path( __FILE__ ) . '/js/sociable.js', array('jquery'));
+			//wp_enqueue_script('padma-sociable', plugin_dir_url( __FILE__ ) . 'js/sociable.js', array('jquery'));
 
 		}
 	
