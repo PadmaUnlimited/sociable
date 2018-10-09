@@ -181,15 +181,14 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 		  			$img_url = plugin_dir_url( __FILE__ ) . 'icons/' . $icon_set . '/' . padma_fix_data_type(padma_get('network', $icon));
 		  		}
 
-		  		//debug(padma_get('icon-size', $icon, false));
-
 		  		if(padma_get('icon-size', $icon, false) != ''){
 		  			$size 		= padma_get('icon-size', $icon, false);
 		  			$img_url 	.= '-' . $size . '.png';
 		  		}else{
-					$img_url	.= '-64x64.png';
+		  			if ($icon_set != 'custom') {
+						$img_url	.= '-64x64.png';
+					}
 		  		}
-		  		//debug($img_url);
 
 		  		$i++;
 		  		$output = array(
