@@ -2,7 +2,7 @@
 
 class PadmaSociableBlock extends PadmaBlockAPI {
 	
-	public $id 				= 'Sociable';	
+	public $id 				= 'sociable';	
 	public $name 			= 'Sociable';		
 	public $options_class 	= 'PadmaSociableBlockOptions';	
 	public $fixed_height 	= true;	

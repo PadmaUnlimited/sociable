@@ -26,10 +26,17 @@ function register_sociable_block() {
 
 }
 
-if (is_admin()) {
-	/*	Allow updates	*/
-	if(class_exists('PadmaUpdater')){
-		$PadmaUpdater = new PadmaUpdater();
-		$PadmaUpdater->updater('padma-sociable',__DIR__);
-	}
+/**
+ *
+ * Updates control
+ *
+ */
+if(is_admin()){
+	add_action('after_setup_theme', 'padma_sociable_updates');
+    function padma_sociable_updates(){
+        if(class_exists('PadmaUpdater')){
+			$PadmaUpdater = new PadmaUpdater();
+			$PadmaUpdater->updater('padma-sociable',__DIR__);
+		}
+    }
 }
