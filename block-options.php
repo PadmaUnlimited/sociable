@@ -56,7 +56,16 @@ class PadmaSociableBlockOptions extends PadmaBlockOptionsAPI {
 											'show' => array(
 												'li#sub-tab-outline-by-roundicons-set'
 											)
-										)
+										),
+
+		'capsocial-square-flat-by-litvin' => array(
+											'hide' => array(
+												'li[id*="-set"]:not(#sub-tab-capsocial-square-flat-by-litvin-set)'
+											),
+											'show' => array(
+												'li#sub-tab-capsocial-square-flat-by-litvin-set'
+											)
+										),
 	);
 
 	public $inputs = array(
