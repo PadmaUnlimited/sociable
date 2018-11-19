@@ -8,7 +8,7 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 	public $fixed_height 	= true;	
 	public $html_tag 		= 'section';
 	public $description 	= 'Display a set of Sociable icons';
-	public $categories 		= array('core','social');
+	public $categories 		= array('social');
 
 	protected $show_content_in_grid = false;
 
