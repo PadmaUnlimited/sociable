@@ -4,7 +4,7 @@
 Plugin Name: Padma Sociable
 Plugin URI: https://www.padmaunlimited.com/plugins/sociable
 Description: Social Block with several icons set
-Version: 1.0.8
+Version: 1.0.9
 Author: Padma Unlimited team
 Author URI: https://www.padmaunlimited.com
 License: GNU GPL v2
@@ -27,23 +27,13 @@ function register_sociable_block() {
 	$class_file = __DIR__ . '/block.php';
 	$icons = __DIR__;
 
-	if(function_exists('padma_register_block_complex')){
-
-		padma_register_block_complex(
-			$class,
-			$block_type_url,
-			$class_file,
-			$icons
-		);
-
-	}else{
-
-		padma_register_block(
-			$class,
-			$block_type_url
-		);
-
-	}
+	padma_register_block(
+		$class,
+		$block_type_url,
+		$class_file,
+		$icons
+	);
+	
 
 	/**
 	 *
