@@ -60,6 +60,60 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 				'Clicked' => 'img a:active'
 			)
 		));
+
+		$this->register_block_element(array(
+			'id' => 'icon paragraph',
+			'name' => 'Icon paragraph',
+			'selector' => 'li p'
+		));
+
+		$this->register_block_element(array(
+			'id' => 'icon link',
+			'name' => 'Icon link',
+			'selector' => 'li a'
+		));
+
+		$this->register_block_element(array(
+			'id' => 'icon span',
+			'name' => 'Icon span',
+			'selector' => 'li span'
+		));
+
+		$this->register_block_element(array(
+			'id' => 'icon h1',
+			'name' => 'Icon h1',
+			'selector' => 'li h1'
+		));
+
+		$this->register_block_element(array(
+			'id' => 'icon h2',
+			'name' => 'Icon h2',
+			'selector' => 'li h2'
+		));
+
+		$this->register_block_element(array(
+			'id' => 'icon h3',
+			'name' => 'Icon h3',
+			'selector' => 'li h3'
+		));
+
+		$this->register_block_element(array(
+			'id' => 'icon h4',
+			'name' => 'Icon h4',
+			'selector' => 'li h4'
+		));
+
+		$this->register_block_element(array(
+			'id' => 'icon h5',
+			'name' => 'Icon h5',
+			'selector' => 'li h5'
+		));
+
+		$this->register_block_element(array(
+			'id' => 'icon h6',
+			'name' => 'Icon h6',
+			'selector' => 'li h6'
+		));
 		
 	}
 
@@ -172,8 +226,6 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 
 			$i = 0;
 		  	foreach ( $icons as $icon ) {
-
-		  		debug($icon);
 
 		  		if ( !padma_get('image', $icon) && !padma_get('network', $icon) )
 		  			continue;
