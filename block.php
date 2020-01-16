@@ -173,6 +173,8 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 			$i = 0;
 		  	foreach ( $icons as $icon ) {
 
+		  		debug($icon);
+
 		  		if ( !padma_get('image', $icon) && !padma_get('network', $icon) )
 		  			continue;
 
@@ -209,16 +211,27 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 
 		  			echo '<li>';
 
-		  			/* Open hyperlink if user added one for image */
-		  			if ( $output['hyperlink']['href'] )
-		  				echo '<a href="' . $output['hyperlink']['href'] . '"' . $output['hyperlink']['target'] . $output['hyperlink']['alt']. 'rel="'.$output['hyperlink']['rel'] .'" ' . '>';
+		  			if( isset( $icon['before-icon'] ) && !empty( $icon['before-icon'] ) ){
+		  				echo trim($icon['before-icon']);
+		  			}
 
-				  			/* Don't forget to display the ACTUAL IMAGE */
-				  			echo '<img src="' . $output['image']['src'] . '"' . $output['image']['alt'] . $output['image']['title'] . ' class="img-' . $i . '" ' . $svg_width . ' />';
+		  			/* Open hyperlink if user added one for image */
+		  			if ( $output['hyperlink']['href'] ){
+		  				echo '<a href="' . $output['hyperlink']['href'] . '"' . $output['hyperlink']['target'] . $output['hyperlink']['alt']. 'rel="'.$output['hyperlink']['rel'] .'" ' . '>';
+		  			}
+		  			
+		  			/* Don't forget to display the ACTUAL IMAGE */
+		  			echo '<img src="' . $output['image']['src'] . '"' . $output['image']['alt'] . $output['image']['title'] . ' class="img-' . $i . '" ' . $svg_width . ' />';
 
 		  			/* Closing tag for hyperlink */
-		  			if ( $output['hyperlink']['href'] )
+		  			if ( $output['hyperlink']['href'] ){
 		  				echo '</a>';
+		  			}
+
+
+		  			if( isset( $icon['after-icon'] ) && !empty( $icon['after-icon'] ) ){
+		  				echo trim($icon['after-icon']);
+		  			}
 
 		  			echo '</li>';
 		  		

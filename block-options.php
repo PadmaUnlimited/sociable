@@ -257,7 +257,21 @@ class PadmaSociableBlockOptions extends PadmaBlockOptionsAPI {
 						'type'	=> 'text',
 						'tooltip' => 'Here you can add value for the rel attribute. Example values: noreferrer, noopener, nofollow, lightbox',
 						'default' => 'noreferrer',
-					)
+					),
+
+					array(
+						'name' => 'before-icon',
+						'label' => 'Before icon',
+						'type'	=> 'wysiwyg',
+						'tooltip' => 'Add content before the icon',
+					),
+
+					array(
+						'name' => 'after-icon',
+						'label' => 'After icon',
+						'type'	=> 'wysiwyg',
+						'tooltip' => 'Add content after the icon',
+					),
 
 				),
 				'tooltip' => 'Upload the images that you would like to add to the image block.',
@@ -353,7 +367,21 @@ class PadmaSociableBlockOptions extends PadmaBlockOptionsAPI {
 							'type'	=> 'text',
 							'tooltip' => 'Here you can add value for the rel attribute. Example values: noreferrer, noopener, nofollow, lightbox',
 							'default' => 'noreferrer',
-						)
+						),
+
+						array(
+							'name' => 'before-icon',
+							'label' => 'Before icon',
+							'type'	=> 'wysiwyg',
+							'tooltip' => 'Add content before the icon',
+						),
+
+						array(
+							'name' => 'after-icon',
+							'label' => 'After icon',
+							'type'	=> 'wysiwyg',
+							'tooltip' => 'Add content after the icon',
+						),
 						/*
 						array(
 							'name' => 'icon-preview',
