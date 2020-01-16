@@ -202,7 +202,8 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 		  			'hyperlink' => array(
 		  				'href' => padma_fix_data_type(padma_get('link-url', $icon)),
 		  				'alt' => padma_fix_data_type(padma_get('link-alt', $icon, false)) ? ' alt="' . padma_fix_data_type(padma_get('link-alt', $icon, false)) . '"' : null,
-		  				'target' => padma_fix_data_type(padma_get('link-target', $icon, false)) ? ' target="_blank"' : null
+		  				'target' => padma_fix_data_type(padma_get('link-target', $icon, false)) ? ' target="_blank"' : null,
+		  				'rel' => padma_fix_data_type(padma_get('link-rel', $icon, 'noreferrer')) ? padma_get('link-rel', $icon, 'noreferrer') : 'noreferrer',
 		  			)
 		  		);
 
@@ -210,7 +211,7 @@ class PadmaSociableBlock extends PadmaBlockAPI {
 
 		  			/* Open hyperlink if user added one for image */
 		  			if ( $output['hyperlink']['href'] )
-		  				echo '<a href="' . $output['hyperlink']['href'] . '"' . $output['hyperlink']['target'] . $output['hyperlink']['alt'] . '>';
+		  				echo '<a href="' . $output['hyperlink']['href'] . '"' . $output['hyperlink']['target'] . $output['hyperlink']['alt']. 'rel="'.$output['hyperlink']['rel'] .'" ' . '>';
 
 				  			/* Don't forget to display the ACTUAL IMAGE */
 				  			echo '<img src="' . $output['image']['src'] . '"' . $output['image']['alt'] . $output['image']['title'] . ' class="img-' . $i . '" ' . $svg_width . ' />';

@@ -249,6 +249,14 @@ class PadmaSociableBlockOptions extends PadmaBlockOptionsAPI {
 						'type' => 'checkbox',
 						'tooltip' => 'If you would like to open the link in a new window check this option',
 						'default' => false,
+					),
+
+					array(
+						'name' => 'link-rel',
+						'label' => 'Rel',
+						'type'	=> 'text',
+						'tooltip' => 'Here you can add value for the rel attribute. Example values: noreferrer, noopener, nofollow, lightbox',
+						'default' => 'noreferrer',
 					)
 
 				),
@@ -338,6 +346,14 @@ class PadmaSociableBlockOptions extends PadmaBlockOptionsAPI {
 							'tooltip' => 'If you would like to open the link in a new window check this option',
 							'default' => false,
 						),
+
+						array(
+							'name' => 'link-rel',
+							'label' => 'Rel',
+							'type'	=> 'text',
+							'tooltip' => 'Here you can add value for the rel attribute. Example values: noreferrer, noopener, nofollow, lightbox',
+							'default' => 'noreferrer',
+						)
 						/*
 						array(
 							'name' => 'icon-preview',
